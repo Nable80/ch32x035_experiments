@@ -42,3 +42,6 @@ clean:
 	rm -f $(TARGET).elf $(TARGET).bin $(TARGET).hex $(TARGET).lst $(TARGET).map $(TARGET).hex
 
 build: $(TARGET).bin
+
+tags: $(SOURCES)
+	ctags --totals -R $(SOURCES) lib
