@@ -12,7 +12,6 @@ CFLAGS += \
 	-I . \
 	-ffunction-sections -fdata-sections -fno-common \
 	-nostdlib -ffreestanding \
-	-D DEBUG=DEBUG_UART2 \
 	-Wall -Wextra
 
 LDFLAGS += -T lib/Ld/Link.ld -Wl,--gc-sections -lgcc
@@ -22,7 +21,9 @@ SOURCES := \
 	lib/Debug/debug.c \
 	system_ch32x035.c \
 	ch32x035_it.c \
+	lib/Peripheral/src/ch32x035_flash.c \
 	lib/Peripheral/src/ch32x035_gpio.c \
+	lib/Peripheral/src/ch32x035_misc.c \
 	lib/Peripheral/src/ch32x035_rcc.c \
 	lib/Peripheral/src/ch32x035_usart.c \
 	main.c
