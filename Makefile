@@ -14,7 +14,10 @@ CFLAGS += \
 	-nostdlib -ffreestanding \
 	-Wall -Wextra
 
-LDFLAGS += -T lib/Ld/Link.ld -Wl,--gc-sections -lgcc
+LDFLAGS += -T lib/Ld/Link.ld \
+	-Wl,--gc-sections,--sort-section=alignment,--orphan-handling=place \
+	-Wl,--print-memory-usage,-Map=$(TARGET).map \
+	-lgcc
 
 SOURCES := \
 	lib/Startup/startup_ch32x035.S \
@@ -34,7 +37,6 @@ $(TARGET).elf: $(SOURCES)
 $(TARGET).bin: $(TARGET).elf
 	$(PREFIX)-size $^
 	$(PREFIX)-objdump -S $^ > $(TARGET).lst
-	$(PREFIX)-objdump -t $^ > $(TARGET).map
 	$(PREFIX)-objcopy -O binary $< $(TARGET).bin
 	$(PREFIX)-objcopy -O ihex $< $(TARGET).hex
 

@@ -30,7 +30,7 @@
 #define CFGR0_BYTE4_ADDRESS         ((uint32_t)0x40021007)
 
 
-static __I uint8_t APBAHBPrescTable[16] = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8};
+static const uint8_t APBAHBPrescTable[16] = {1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8};
 
 /*********************************************************************
  * @fn      RCC_DeInit
