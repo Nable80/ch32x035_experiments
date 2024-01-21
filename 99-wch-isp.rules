@@ -1,0 +1,7 @@
+# Different versions of WCH USB bootloader:
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="4348", ATTRS{idProduct}=="55e0", MODE:="0666"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55e0", MODE:="0666"
+# WCH-Link / WCH-LinkE in RISC-V/ARM modes:
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="8010", MODE:="0666"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="8011", MODE:="0666"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="8012", MODE:="0666"
