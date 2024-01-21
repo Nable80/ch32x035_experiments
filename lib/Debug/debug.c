@@ -169,9 +169,10 @@ void SDI_Printf_Enable(void)
  *
  * @return  size - Data length
  */
-__attribute__((used))
 int _write(int fd, char *buf, int size)
 {
+    (void)fd;
+
     int i = 0;
 
 #if (SDI_PRINT == SDI_PR_OPEN)
@@ -181,8 +182,8 @@ int _write(int fd, char *buf, int size)
     {
 
         /**
-         * data0  data1 ¹²8¸ö×Ö½Ú
-         * data0×îµÍÎ»µÄ×Ö½Ú´æ·Å³¤¶È£¬×î´óÎª 7
+         * data0  data1 å…±8ä¸ªå­—èŠ‚
+         * data0æœ€ä½ä½çš„å­—èŠ‚å­˜æ”¾é•¿åº¦ï¼Œæœ€å¤§ä¸º 7
          *
          */
 

@@ -53,13 +53,14 @@ int main(void)
 {
     u8 i = 0;
 
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     SystemCoreClockUpdate();
     Delay_Init();
+#if 0
     USART_Printf_Init(115200);
     printf("SystemClk:%d\r\n", SystemCoreClock);
     printf( "ChipID:%08x\r\n", DBGMCU_GetCHIPID() );
     printf("GPIO Toggle TEST\r\n");
+#endif
     GPIO_Toggle_INIT();
 
     while(1)

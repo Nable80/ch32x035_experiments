@@ -51,3 +51,9 @@ SPI:
 * ``PA5`` - ``SCK``
 * ``PA6`` - ``MISO``
 * ``PA7`` - ``MOSI``
+
+### NOTE:
+
+NOTE: original WCH's toolchain uses ``-march=rv32imacxw`` to enable useful proprietary extentions (non-standard compressed instructions, fast interrupt handling, etc) and all of this isn't available in a regular toolchain (did they publish any patches?).
+
+I changed this to ``-march=rv32imac_zicsr`` to be able to compile the code at least somehow but I don't know much about RISC-V, feel free to correct me.
