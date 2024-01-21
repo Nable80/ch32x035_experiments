@@ -24,6 +24,7 @@ SOURCES := \
 	ch32x035_it.c \
 	lib/Peripheral/src/ch32x035_gpio.c \
 	lib/Peripheral/src/ch32x035_rcc.c \
+	lib/Peripheral/src/ch32x035_usart.c \
 	main.c
 
 $(TARGET).elf: $(SOURCES)

@@ -23,20 +23,27 @@
 /* Global define */
 
 /* Global Variable */
+void print(const char *buf)
+{
+    while (*buf) {
+        while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET) {}
+        USART_SendData(USART2, *buf++);
+    }
+}
 
 /*********************************************************************
- * @fn      GPIO_Toggle_INIT
+ * @fn      Pins_Init
  *
- * @brief   Initializes GPIOA.0
+ * @brief   Initializes GPIOA
  *
  * @return  none
  */
-void GPIO_Toggle_INIT(void)
+void Pins_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure = {0};
 
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
@@ -55,17 +62,14 @@ int main(void)
 
     SystemCoreClockUpdate();
     Delay_Init();
-#if 0
     USART_Printf_Init(115200);
-    printf("SystemClk:%d\r\n", SystemCoreClock);
-    printf( "ChipID:%08x\r\n", DBGMCU_GetCHIPID() );
-    printf("GPIO Toggle TEST\r\n");
-#endif
-    GPIO_Toggle_INIT();
+    Pins_Init();
 
-    while(1)
-    {
+    while (1) {
+        print("Hello\n");
+        GPIO_WriteBit(GPIOA, GPIO_Pin_0, (i == 0));
+        GPIO_WriteBit(GPIOA, GPIO_Pin_1, (i == 1));
+        i ^= 1;
         Delay_Ms(500);
-        GPIO_WriteBit(GPIOA, GPIO_Pin_0, (i == 0) ? (i = Bit_SET) : (i = Bit_RESET));
     }
 }
